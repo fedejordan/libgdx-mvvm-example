@@ -4,16 +4,22 @@ import com.badlogic.gdx.Game;
 import com.todoapps.libgdxmvvmexample.MVVM.Dependency;
 import com.todoapps.libgdxmvvmexample.MVVM.Router;
 import com.todoapps.libgdxmvvmexample.game.GameBuilder;
+import com.todoapps.libgdxmvvmexample.game.GameRouter;
 
 /**
  * Created by federicojordan on 8/10/17.
  */
 
 public class LevelSelectionRouter extends Router<LevelSelectionRouterListener, LevelSelectionScreen, LevelSelectionViewModel> implements LevelSelectionViewModelListener {
-    public GameBuilder levelSelectionBuilder;
+    public GameBuilder gameBuilder;
 
     public LevelSelectionRouter(LevelSelectionScreen screen, LevelSelectionViewModel viewModel, Dependency dependency, Game game, Router parentRouter) {
         super(screen, viewModel, dependency, game, parentRouter);
+    }
+
+    // Setters
+    public void setGameBuilder(GameBuilder gameBuilder) {
+        this.gameBuilder = gameBuilder;
     }
 
     public void showLevelSelection() {
@@ -24,11 +30,14 @@ public class LevelSelectionRouter extends Router<LevelSelectionRouterListener, L
     // LevelSelectionViewModelListener
     @Override
     public void showGameWithLevel(int level) {
-        // GameBuilder
+        GameRouter gameRouter = gameBuilder.build(dependency, game, this);
+        gameRouter.showGame();
+        attachChild(gameRouter);
     }
 
     @Override
     public void showHome() {
         parentRouter.dettachChild();
     }
+
 }
