@@ -7,6 +7,7 @@ import com.todoapps.libgdxmvvmexample.MVVM.ViewModel;
  * Created by federicojordan on 8/10/17.
  */
 
+// Class to manage game logic
 class GameViewModel extends ViewModel<GameViewModelListener, GameScreen> implements GameScreenListener {
 
     private static final String TAG = "GameViewModel";

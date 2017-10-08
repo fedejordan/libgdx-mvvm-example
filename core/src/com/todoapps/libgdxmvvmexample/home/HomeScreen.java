@@ -12,6 +12,8 @@ import com.todoapps.libgdxmvvmexample.managers.SkinManager;
  * Created by federicojordan on 8/10/17.
  */
 
+// Class to show home UI actions (new game, options, share, rate, rankings, etc).
+// Don't handle navigation logic here. Just for presenting UI and handle user events
 class HomeScreen extends ParentScreen<HomeScreenListener> {
 
     private SkinManager skinManager;

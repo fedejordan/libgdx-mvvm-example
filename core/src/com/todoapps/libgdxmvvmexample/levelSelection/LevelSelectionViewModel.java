@@ -7,6 +7,7 @@ import com.todoapps.libgdxmvvmexample.MVVM.ViewModel;
  * Created by federicojordan on 8/10/17.
  */
 
+// Class to get your levels (from DB, preferences, etc) and show in the screen (LevelSelectionScreen)
 class LevelSelectionViewModel extends ViewModel<LevelSelectionViewModelListener, LevelSelectionScreen> implements LevelSelectionScreenListener {
 
     private static final String TAG = "HomeViewModel";

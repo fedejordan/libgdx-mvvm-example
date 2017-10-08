@@ -11,6 +11,7 @@ import com.todoapps.libgdxmvvmexample.managers.SkinManager;
  * Created by federicojordan on 8/10/17.
  */
 
+// Class to show the list of levels of your game. You can change the presentation of the levels without touching their logic
 class LevelSelectionScreen extends ParentScreen<LevelSelectionScreenListener> {
 
     private SkinManager skinManager;

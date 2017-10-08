@@ -1,6 +1,7 @@
 package com.todoapps.libgdxmvvmexample.game;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.todoapps.libgdxmvvmexample.MVVM.ParentScreen;
@@ -10,6 +11,8 @@ import com.todoapps.libgdxmvvmexample.managers.SkinManager;
 /**
  * Created by federicojordan on 8/10/17.
  */
+
+// Class to manage game graphics and events from user. DON'T HANDLE ANY GAME LOGIC HERE
 
 class GameScreen extends ParentScreen<GameScreenListener> {
 
@@ -24,7 +27,15 @@ class GameScreen extends ParentScreen<GameScreenListener> {
     // Interface
 
     private void setupInterface() {
+        setupLabel();
         setupLevelSelectionButton();
+    }
+
+    private void setupLabel() {
+        Label yourGameUIHereLabel = new Label("Your game UI/graphics here!", skinManager.getSkin(), "default");
+        yourGameUIHereLabel.setSize(gameScreenConfigurationManager.getViewportWidth(), 50);
+        yourGameUIHereLabel.setPosition(0, 0);
+        stage.addActor(yourGameUIHereLabel);
     }
 
     private void setupLevelSelectionButton() {
