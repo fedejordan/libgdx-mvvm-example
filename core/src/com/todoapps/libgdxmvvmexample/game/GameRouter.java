@@ -10,15 +10,15 @@ import com.todoapps.libgdxmvvmexample.levelSelection.LevelSelectionRouter;
  * Created by federicojordan on 8/10/17.
  */
 
-public class GameRouter extends Router<GameRouterListener, GameScreen, GameViewModel> implements GameViewModelListener {
+public class GameRouter extends Router<GameRouterListener, GameViewModel> implements GameViewModelListener {
 
-    public GameRouter(GameScreen screen, GameViewModel viewModel, Game game, Router parentRouter) {
-        super(screen, viewModel, game, parentRouter);
+    public GameRouter(GameViewModel viewModel, Game game, Router parentRouter) {
+        super(viewModel, game, parentRouter);
     }
 
     public void showGame() {
-        game.setScreen(screen);
-        screen.activateInput();
+        game.setScreen(viewModel.getScreen());
+        viewModel.getScreen().activateInput();
     }
 
     // GameViewModelListener

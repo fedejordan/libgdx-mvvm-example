@@ -21,7 +21,7 @@ public class LevelSelectionBuilder extends Builder<LevelSelectionRouter> {
         LevelSelectionScreen levelSelectionScreen = new LevelSelectionScreen(dependency.getGameScreenConfigurationManager(), dependency.getSkinManager());
         LevelSelectionViewModel levelSelectionViewModel = new LevelSelectionViewModel(levelSelectionScreen);
         levelSelectionScreen.setListener(levelSelectionViewModel);
-        LevelSelectionRouter levelSelectionRouter = new LevelSelectionRouter(levelSelectionScreen, levelSelectionViewModel, game, parentRouter);
+        LevelSelectionRouter levelSelectionRouter = new LevelSelectionRouter(levelSelectionViewModel, game, parentRouter);
         levelSelectionViewModel.setListener(levelSelectionRouter);
         levelSelectionRouter.setGameBuilder(new GameBuilder(dependency));
         return levelSelectionRouter;

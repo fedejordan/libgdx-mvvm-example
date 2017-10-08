@@ -14,11 +14,11 @@ import com.todoapps.libgdxmvvmexample.levelSelection.LevelSelectionRouter;
  * Created by federicojordan on 8/10/17.
  */
 
-public class HomeRouter extends Router<HomeRouterListener, HomeScreen, HomeViewModel> implements HomeViewModelListener {
+public class HomeRouter extends Router<HomeRouterListener, HomeViewModel> implements HomeViewModelListener {
     private LevelSelectionBuilder levelSelectionBuilder;
 
-    public HomeRouter(HomeScreen screen, HomeViewModel viewModel, Game game, Router parentRouter) {
-        super(screen, viewModel, game, parentRouter);
+    public HomeRouter(HomeViewModel viewModel, Game game, Router parentRouter) {
+        super(viewModel, game, parentRouter);
     }
 
     // Setters
@@ -27,8 +27,8 @@ public class HomeRouter extends Router<HomeRouterListener, HomeScreen, HomeViewM
     }
 
     public void showHome() {
-        game.setScreen(screen);
-        screen.activateInput();
+        game.setScreen(viewModel.getScreen());
+        viewModel.getScreen().activateInput();
     }
 
     // HomeViewModelListener

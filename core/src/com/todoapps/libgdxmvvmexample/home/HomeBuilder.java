@@ -22,7 +22,7 @@ public class HomeBuilder extends Builder<HomeRouter> {
         HomeScreen homeScreen = new HomeScreen(dependency.getGameScreenConfigurationManager(), dependency.getSkinManager());
         HomeViewModel homeViewModel = new HomeViewModel(homeScreen);
         homeScreen.setListener(homeViewModel);
-        HomeRouter homeRouter = new HomeRouter(homeScreen, homeViewModel, game, parentRouter);
+        HomeRouter homeRouter = new HomeRouter(homeViewModel, game, parentRouter);
         homeRouter.setLevelSelectionBuilder(new LevelSelectionBuilder(dependency));
         homeViewModel.setListener(homeRouter);
         return homeRouter;

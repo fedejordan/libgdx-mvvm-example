@@ -21,7 +21,7 @@ public class GameBuilder extends Builder<GameRouter> {
         GameScreen gameScreen = new GameScreen(dependency.getGameScreenConfigurationManager(), dependency.getSkinManager());
         GameViewModel gameViewModel = new GameViewModel(gameScreen);
         gameScreen.setListener(gameViewModel);
-        GameRouter gameRouter = new GameRouter(gameScreen, gameViewModel, game, parentRouter);
+        GameRouter gameRouter = new GameRouter(gameViewModel, game, parentRouter);
         gameViewModel.setListener(gameRouter);
         return gameRouter;
     }
