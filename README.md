@@ -25,6 +25,7 @@ I think that this can be an approach to separate game presentation (Screens), ga
 ### TODO:
 - Add unit tests (jUnit)
 - Do script to autogenerate boilerplate (Router, Builder, Screen, ViewModel and listeners) for a new flow
+- Make dependencies interfaces, to generate Mocks when testing
 - More logic to show how to do more sophisticated things :)
 
 Fell free to post any issues, or submit any pull request with suggestions. 
