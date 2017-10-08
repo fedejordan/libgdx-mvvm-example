@@ -1,33 +1,32 @@
 package com.todoapps.libgdxmvvmexample;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.todoapps.libgdxmvvmexample.MVVM.Dependency;
+import com.todoapps.libgdxmvvmexample.MVVM.Builder;
+import com.todoapps.libgdxmvvmexample.home.HomeBuilder;
+import com.todoapps.libgdxmvvmexample.home.HomeRouter;
+import com.todoapps.libgdxmvvmexample.levelSelection.LevelSelectionBuilder;
+import com.todoapps.libgdxmvvmexample.managers.GameScreenConfigurationManager;
+import com.todoapps.libgdxmvvmexample.managers.SkinManager;
 
-public class LibgdxMVVMExampleGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-	}
+public class LibgdxMVVMExampleGame extends Game {
+
+	private HomeRouter router;
+	private Dependency rootDependency;
 
 	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
-	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
+	public void create() {
+		// Game dependencies
+		rootDependency = new Dependency(new GameScreenConfigurationManager(), new SkinManager());
+
+		// Main router
+		HomeBuilder homeBuilder = new HomeBuilder();
+		router = homeBuilder.build(rootDependency, this);
+		router.showHome();
 	}
 }
