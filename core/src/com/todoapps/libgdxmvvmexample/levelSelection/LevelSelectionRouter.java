@@ -12,17 +12,23 @@ import com.todoapps.libgdxmvvmexample.game.GameBuilder;
 public class LevelSelectionRouter extends Router<LevelSelectionRouterListener, LevelSelectionScreen, LevelSelectionViewModel> implements LevelSelectionViewModelListener {
     public GameBuilder levelSelectionBuilder;
 
-    public LevelSelectionRouter(LevelSelectionScreen screen, LevelSelectionViewModel viewModel, Dependency dependency, Game game) {
-        super(screen, viewModel, dependency, game);
+    public LevelSelectionRouter(LevelSelectionScreen screen, LevelSelectionViewModel viewModel, Dependency dependency, Game game, Router parentRouter) {
+        super(screen, viewModel, dependency, game, parentRouter);
     }
 
     public void showLevelSelection() {
         game.setScreen(screen);
+        screen.activateInput();
     }
 
     // LevelSelectionViewModelListener
     @Override
     public void showGameWithLevel(int level) {
         // GameBuilder
+    }
+
+    @Override
+    public void showHome() {
+        parentRouter.dettachChild();
     }
 }

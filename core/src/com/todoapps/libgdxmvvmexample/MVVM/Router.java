@@ -12,16 +12,18 @@ import javafx.scene.Parent;
 public class Router<T extends RouterListener, S extends ParentScreen, V extends ViewModel> {
     protected final Game game;
     private Router childRouter;
+    protected Router parentRouter;
     private V viewModel;
     protected S screen;
     protected Dependency dependency;
     protected T listener;
 
-    public Router(S screen, V viewModel, Dependency dependency, Game game) {
+    public Router(S screen, V viewModel, Dependency dependency, Game game, Router parentRouter) {
         this.screen = screen;
         this.viewModel = viewModel;
         this.dependency = dependency;
         this.game = game;
+        this.parentRouter = parentRouter;
     }
 
     public void setListener(T listener) {
@@ -34,5 +36,7 @@ public class Router<T extends RouterListener, S extends ParentScreen, V extends 
 
     public void dettachChild() {
         this.childRouter = null;
+        game.setScreen(screen);
+        screen.activateInput();
     }
 }

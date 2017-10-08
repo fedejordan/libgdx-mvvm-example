@@ -8,4 +8,5 @@ import com.todoapps.libgdxmvvmexample.MVVM.ViewModelListener;
 
 public interface LevelSelectionViewModelListener extends ViewModelListener {
     void showGameWithLevel(int level);
+    void showHome();
 }

@@ -9,5 +9,5 @@ import com.badlogic.gdx.Game;
 
 public abstract class Builder<T extends Router> {
 
-    public abstract T build(Dependency dependency, Game game);
+    public abstract T build(Dependency dependency, Game game, Router parentRouter);
 }

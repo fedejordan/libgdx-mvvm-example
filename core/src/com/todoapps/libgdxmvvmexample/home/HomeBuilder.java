@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.todoapps.libgdxmvvmexample.LibgdxMVVMExampleGame;
 import com.todoapps.libgdxmvvmexample.MVVM.Builder;
 import com.todoapps.libgdxmvvmexample.MVVM.Dependency;
+import com.todoapps.libgdxmvvmexample.MVVM.Router;
 import com.todoapps.libgdxmvvmexample.levelSelection.LevelSelectionBuilder;
 
 /**
@@ -13,11 +14,11 @@ import com.todoapps.libgdxmvvmexample.levelSelection.LevelSelectionBuilder;
 public class HomeBuilder extends Builder<HomeRouter> {
 
     @Override
-    public HomeRouter build(Dependency dependency, Game game) {
+    public HomeRouter build(Dependency dependency, Game game, Router parentRouter) {
         HomeScreen homeScreen = new HomeScreen(dependency.getGameScreenConfigurationManager(), dependency.getSkinManager());
         HomeViewModel homeViewModel = new HomeViewModel(homeScreen);
         homeScreen.setListener(homeViewModel);
-        HomeRouter homeRouter = new HomeRouter(homeScreen, homeViewModel, dependency, game);
+        HomeRouter homeRouter = new HomeRouter(homeScreen, homeViewModel, dependency, game, parentRouter);
         homeRouter.setLevelSelectionBuilder(new LevelSelectionBuilder());
         homeViewModel.setListener(homeRouter);
         return homeRouter;

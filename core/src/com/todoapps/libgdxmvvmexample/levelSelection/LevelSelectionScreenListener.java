@@ -8,4 +8,5 @@ import com.todoapps.libgdxmvvmexample.MVVM.ScreenListener;
 
 interface LevelSelectionScreenListener extends ScreenListener {
     void didSelectPlayLevel();
+    void didSelectBack();
 }

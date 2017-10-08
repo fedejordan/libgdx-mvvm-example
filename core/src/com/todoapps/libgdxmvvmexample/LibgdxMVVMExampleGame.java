@@ -26,7 +26,7 @@ public class LibgdxMVVMExampleGame extends Game {
 
 		// Main router
 		HomeBuilder homeBuilder = new HomeBuilder();
-		router = homeBuilder.build(rootDependency, this);
+		router = homeBuilder.build(rootDependency, this, null);
 		router.showHome();
 	}
 }

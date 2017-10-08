@@ -25,6 +25,23 @@ class LevelSelectionScreen extends ParentScreen<LevelSelectionScreenListener> {
 
     private void setupInterface() {
         setupLevelSelectionButton();
+        setupBackButton();
+    }
+
+    private void setupBackButton() {
+        TextButton backButton = new TextButton("back", skinManager.getSkin(), "default");
+        float buttonWidth = gameScreenConfigurationManager.getViewportWidth()/6;
+        float buttonHeight = 50;
+        backButton.setSize(buttonWidth, buttonHeight);
+        backButton.setPosition(0, gameScreenConfigurationManager.getViewportHeight()-buttonHeight);
+        backButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                listener.didSelectBack();
+            }
+        });
+        stage.addActor(backButton);
     }
 
     private void setupLevelSelectionButton() {

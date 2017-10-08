@@ -21,4 +21,9 @@ class LevelSelectionViewModel extends ViewModel<LevelSelectionViewModelListener,
         int level = 1;
         listener.showGameWithLevel(level);
     }
+
+    @Override
+    public void didSelectBack() {
+        listener.showHome();
+    }
 }

@@ -24,6 +24,9 @@ public class ParentScreen<T extends ScreenListener> extends ScreenAdapter {
         Camera camera = new OrthographicCamera(gameScreenConfigurationManager.getViewportWidth(), gameScreenConfigurationManager.getViewportHeight());
         this.stage = new Stage(new ExtendViewport(gameScreenConfigurationManager.getViewportWidth(), gameScreenConfigurationManager.getViewportHeight(), camera));
         this.gameScreenConfigurationManager = gameScreenConfigurationManager;
+    }
+
+    public void activateInput() {
         Gdx.input.setInputProcessor(stage);
     }
 
