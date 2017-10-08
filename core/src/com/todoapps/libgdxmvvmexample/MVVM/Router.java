@@ -15,13 +15,11 @@ public class Router<T extends RouterListener, S extends ParentScreen, V extends 
     protected Router parentRouter;
     private V viewModel;
     protected S screen;
-    protected Dependency dependency;
     protected T listener;
 
-    public Router(S screen, V viewModel, Dependency dependency, Game game, Router parentRouter) {
+    public Router(S screen, V viewModel, Game game, Router parentRouter) {
         this.screen = screen;
         this.viewModel = viewModel;
-        this.dependency = dependency;
         this.game = game;
         this.parentRouter = parentRouter;
     }

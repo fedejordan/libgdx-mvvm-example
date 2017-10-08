@@ -12,12 +12,16 @@ import com.todoapps.libgdxmvvmexample.levelSelection.LevelSelectionBuilder;
 
 public class GameBuilder extends Builder<GameRouter> {
 
+    public GameBuilder(Dependency dependency) {
+        super(dependency);
+    }
+
     @Override
-    public GameRouter build(Dependency dependency, Game game, Router parentRouter) {
+    public GameRouter build(Game game, Router parentRouter) {
         GameScreen gameScreen = new GameScreen(dependency.getGameScreenConfigurationManager(), dependency.getSkinManager());
         GameViewModel gameViewModel = new GameViewModel(gameScreen);
         gameScreen.setListener(gameViewModel);
-        GameRouter gameRouter = new GameRouter(gameScreen, gameViewModel, dependency, game, parentRouter);
+        GameRouter gameRouter = new GameRouter(gameScreen, gameViewModel, game, parentRouter);
         gameViewModel.setListener(gameRouter);
         return gameRouter;
     }

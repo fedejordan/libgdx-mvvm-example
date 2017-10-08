@@ -13,13 +13,17 @@ import com.todoapps.libgdxmvvmexample.levelSelection.LevelSelectionBuilder;
 
 public class HomeBuilder extends Builder<HomeRouter> {
 
+    public HomeBuilder(Dependency dependency) {
+        super(dependency);
+    }
+
     @Override
-    public HomeRouter build(Dependency dependency, Game game, Router parentRouter) {
+    public HomeRouter build(Game game, Router parentRouter) {
         HomeScreen homeScreen = new HomeScreen(dependency.getGameScreenConfigurationManager(), dependency.getSkinManager());
         HomeViewModel homeViewModel = new HomeViewModel(homeScreen);
         homeScreen.setListener(homeViewModel);
-        HomeRouter homeRouter = new HomeRouter(homeScreen, homeViewModel, dependency, game, parentRouter);
-        homeRouter.setLevelSelectionBuilder(new LevelSelectionBuilder());
+        HomeRouter homeRouter = new HomeRouter(homeScreen, homeViewModel, game, parentRouter);
+        homeRouter.setLevelSelectionBuilder(new LevelSelectionBuilder(dependency));
         homeViewModel.setListener(homeRouter);
         return homeRouter;
     }
